@@ -53,7 +53,7 @@ class TestShouldBeLoginPageElements():
         page.should_be_forgot_password_link()
 
 
-@pytest.mark.credentials(scope="class")
+@pytest.mark.creds(scope="class")
 @allure.severity('critical')  # blocker, critical, major, minor,  trivial
 class TestUserLoginScenarios():
     @allure.story("User login, using valid creds")
