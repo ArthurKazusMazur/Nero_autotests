@@ -1,14 +1,19 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
-from .register_page import RegisterPage
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 
 class LoginPage(BasePage):
+    def login(self, user_login, user_password):
+        self.browser.find_element(*LoginPageLocators.LOGIN_INPUT).send_keys(user_login)
+        self.browser.find_element(*LoginPageLocators.LOGIN_PASSWORD_INPUT).send_keys(user_password)
+        self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
+
     def go_to_registration_page(self, reg_url):
         self.browser.find_element(*LoginPageLocators.LOGIN_REG_LINK).click()
         WebDriverWait(self.browser, 5).until(EC.url_to_be(reg_url))
+        assert self.browser.current_url == reg_url, "REDIRECT TO REGISTRATION PAGE is FAILED!!!"
 
     def go_to_dashboard(self, user_login, user_password, dash_url):
         self.browser.find_element(*LoginPageLocators.LOGIN_INPUT).send_keys(user_login)
@@ -39,6 +44,9 @@ class LoginPage(BasePage):
     def should_be_forgot_password_link(self):
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORGOT_PASSWORD_LINK), \
             "LOGIN PAGE 'Forgot password' LINK IS MISSED!!!"
+
+
+
 
 
 
