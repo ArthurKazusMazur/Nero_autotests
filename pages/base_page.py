@@ -1,3 +1,5 @@
+import allure
+from allure_commons.types import AttachmentType
 from selenium.common.exceptions import NoSuchElementException
 
 
@@ -16,3 +18,7 @@ class BasePage():
         except NoSuchElementException:
             return False
         return True
+
+    def take_a_screenshot(self, browser):  # делает скриншот для отчета allure
+        with allure.step('Taking a screenshot'):
+            allure.attach(browser.get_screenshot_as_png(), name='Screenshot', attachment_type=AttachmentType.PNG)
