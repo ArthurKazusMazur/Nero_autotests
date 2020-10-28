@@ -1,6 +1,5 @@
 # Nero_autotests
 
-<<<<<<< HEAD
 Перед запуском теста из командной строки Windows или терминала PyCharm необходимо активировать виртуальное окружение: 
 		
 		...\Nero_autotests\venv\nero_emvironment\Scripts>activate.bat 
@@ -37,7 +36,3 @@ results - директория, в которой будут храниться 
                 allure serve results
                 
 В результате будет сформирован отчет о тестировании.                
-
-
-
-=======
